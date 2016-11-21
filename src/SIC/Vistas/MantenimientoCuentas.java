@@ -259,7 +259,7 @@ public class MantenimientoCuentas extends javax.swing.JDialog {
             if (SICService.getServCuenta().guardar(cuentaActual)) {
                 JOptionPane.showMessageDialog(null, "Guardado");
                 cargarDatos();
-               limpiarTextos();
+                limpiarTextos();
 
             } else {
                 JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar");
@@ -269,6 +269,7 @@ public class MantenimientoCuentas extends javax.swing.JDialog {
 
     private void limpiarTextos(){
         nombreCuenta.setText("");
+        idCuenta.setText("");
     }
     
     private void comboTiposCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTiposCuentaActionPerformed
@@ -299,12 +300,14 @@ public class MantenimientoCuentas extends javax.swing.JDialog {
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
         // TODO add your handling code here:
         if(cuentaActual!=null){
-            SICService.getServCuenta().guardar(cuentaActual);
-            cargarDatos();
+            SICService.getServCuenta().eliminar(cuentaActual);
             limpiarTextos();
+            cargarDatos();
+            JOptionPane.showMessageDialog(null, "Cuenta eliminada con éxito");
         }else{
             JOptionPane.showMessageDialog(null, "No ha seleccionado una cuenta");
         }
+                
     }//GEN-LAST:event_botonEliminarActionPerformed
 
 
